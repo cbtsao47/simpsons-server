@@ -11,7 +11,12 @@ route.get("/quotes", async (req, res) => {
         raw_character_text: null,
         id: 1
       })
-      .select("raw_character_text as character", "spoken_words as quote")
+      .select(
+        "id",
+        "raw_character_text as character",
+        "spoken_words as quote",
+        "liked"
+      )
       .paginate(perPage, currentPage, true);
     res.send(quotes);
   } catch (err) {
